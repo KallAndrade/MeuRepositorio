@@ -18,9 +18,6 @@ public class Main {
 		int contadorP1 = 0;
 		int contadorP2 = 0;
 		
-		// numero de partidas
-		int cont = 0;
-		
 		try 
 		{
 			// colecao de cartas de cada jogador
@@ -60,7 +57,6 @@ public class Main {
 						contadorP2++;
 					}
 				}
-				cont++;	
 			}
 			
 			writer = new PrintWriter("resultado.txt", "UTF-8");
