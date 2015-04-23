@@ -3,13 +3,15 @@ package com.kall;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		// variaveis para leitura do arquivo de cartas
+		// variaveis para leitura e escrita do arquivo de cartas e de resposta
 		BufferedReader br;
+		PrintWriter writer = null;
 		String linha;
 		
 		// Contadores do numero de vitorias de cada jogador
@@ -58,17 +60,23 @@ public class Main {
 						contadorP2++;
 					}
 				}
-				cont++;
+				cont++;	
 			}
+			
+			writer = new PrintWriter("resultado.txt", "UTF-8");
+			writer.println("Número de vitorias do jogador 1: " + contadorP1);
+			
 			
 		} catch (IOException e) {
 			System.out.println("catched!" + e);
 		}
-		finally { 
-			System.out.println("Número de partidas: " + cont);
-			System.out.println("Número de vitorias do player 1: " + contadorP1);
+		finally {
+			if (writer != null) {
+				writer.close();
+			}
+			//System.out.println("Número de partidas: " + cont);
+			//System.out.println("Número de vitorias do player 1: " + contadorP1);
 		}
 
 	}
-
 }
