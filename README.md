@@ -6,8 +6,11 @@ Para compilação e execução do projeto basta seguir os seguintes passos:
 1. Baixar o zip do repositório e fazer a sua extração em um diretório de sua preferência, ou clonar este repositório para seu repositório local.
 2. No prompt de comando, ir até o diretório do projeto, ou seja, "PokerWinnerCounter".
 3. Considerando que você tenha o Ant instalado em sua máquina, executar os seguintes comandos:
+
   -ant
   -# comando que faz a compilação
+
   - ant -buildfile build.xml Main
   -# comando que executa a tag 'Main' do arquivo build.xml
-4. Confirir o resultado no arquivo 'resultado.txt'.
+
+Confira o resultado no arquivo 'resultado.txt'.
