@@ -74,8 +74,6 @@ public class Main {
 			if (writer != null) {
 				writer.close();
 			}
-			//System.out.println("Número de partidas: " + cont);
-			//System.out.println("Número de vitorias do player 1: " + contadorP1);
 		}
 
 	}
