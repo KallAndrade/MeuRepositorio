@@ -62,9 +62,8 @@ public class Main {
 			writer = new PrintWriter("resultado.txt", "UTF-8");
 			writer.println("Número de vitorias do jogador 1: " + contadorP1);
 			
-			
 		} catch (IOException e) {
-			System.out.println("catched!" + e);
+			System.out.println("catch!" + e);
 		}
 		finally {
 			if (writer != null) {
