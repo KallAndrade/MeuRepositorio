@@ -28,7 +28,7 @@ public class Main {
 			int nivelP1 = 0;
 			int nivelP2 = 0;
 			
-			br = new BufferedReader(new FileReader("/home/kall/Workspace/PokerWinnerCounter/poker.txt"));
+			br = new BufferedReader(new FileReader("poker.txt"));
 			while ((linha = br.readLine()) != null)
 			{
 				mao1 = new Mao();
