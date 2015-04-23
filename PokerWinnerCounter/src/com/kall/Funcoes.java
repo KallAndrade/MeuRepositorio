@@ -17,7 +17,17 @@ public class Funcoes {
 	
 	// Retorna o nivel da mao
 	/*
-	 * 
+	 * Correspondencia do valor de 'nivel', retornado por esse metodo, com as possiveis "maos":
+	 * 1 - High card
+	 * 2 - One Pair
+	 * 3 - Two Pairs
+	 * 4 - Three of a Kind
+	 * 5 - Straight
+	 * 6 - Flush
+	 * 7 - Full House
+	 * 8 - Four of a Kind
+	 * 9 - Straight Flush
+	 * 10 - Royal Flush
 	 */
 	public static int CalcularValorMao(Mao mao) {
 		
