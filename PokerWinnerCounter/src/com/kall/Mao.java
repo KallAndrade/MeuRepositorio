@@ -181,7 +181,7 @@ public class Mao {
 		}
 	}
 	
-	// Em caso de empate os vetores "dsempate" de cada mao são comparados
+	// Em caso de empate os vetores "desempate" de cada mao são comparados
 	// Esse metodo ordena o vetor pela importância das cartas nessa comparação
 	public void OrdenarVetorDesempate(){
 		
@@ -189,65 +189,82 @@ public class Mao {
 			desempate = new Carta[5];
 		}
 		
-		// se possuir 1 dupla ou 1 trio
-		if (nivel == 2 || nivel == 4) {
-			desempate[0] = reps[0];
-			int d = 1;
-			for (int i = 4; i>-1; i--) {
-				if (reps[0].val != mao[i].val) {
-					desempate[d] = mao[i];
-					d++;
-				}
-			}
-			return;
-		}
-		
-		// se possuir 2 duplas
-		if (nivel == 3) {
-			if (reps[0].val > reps[1].val) {
-				desempate[0] = reps[0];
-				desempate[1] = reps[1];
-			} else {
-				desempate[0] = reps[1];
-				desempate[1] = reps[0];
-			}
-			for (int i = 0; i<5; i++) {
-				if (reps[0].val != mao[i].val && reps[1].val != mao[i].val) {
-					desempate[2] = mao[i];
-				}
-			}
-			return;
-		}
-		
-		// se for full house
-		if (nivel == 7) {
-			int cont = 0;
-			for (int i = 0; i < 5; i++) {
-				if (reps[0].val == mao[i].val) {
-					cont++;
-				}
-			}
-			if (cont == 3) {
-				desempate[0] = reps[0];
-				desempate[1] = reps[1];
-			} else {
-				desempate[0] = reps[1];
-				desempate[1] = reps[0];
-			}
+		switch (nivel) {
+			case 2:	// se possuir 1 dupla ou 1 trio
+			case 4:
+				OrdenarDesempateDuplaTrio();
+				break;
 			
-			return;
-		}
+			case 3:	// se possuir 2 duplas
+				OrdenarDesempate2Duplas();
+				break;
+			
+			case 7:	// se for full house
+				OrdenarDesempateFullHouse();
+				break;
 		
-		if (nivel == 8) {
-			desempate[0] = reps[0];
-			int i = 0;
-			while (i < 5 && reps[0].val == mao[i].val) {
-				i++;
-			}
-			desempate[1] = mao[i];
+			case 8:	// Four of a king
+				OrdenarDesempateQuarteto();
+				break;
 		}
 		
 	}
+	
+	// Ordena vetor "desempate" na ocorrencia de uma dupla ou trio
+	public void OrdenarDesempateDuplaTrio(){
+		desempate[0] = reps[0];
+		int d = 1;
+		for (int i = 4; i>-1; i--) {
+			if (reps[0].val != mao[i].val) {
+				desempate[d] = mao[i];
+				d++;
+			}
+		}
+	}
+	
+	// Ordena vetor "desempate" na ocorrencia de 2 duplas
+	public void OrdenarDesempate2Duplas(){
+		if (reps[0].val > reps[1].val) {
+			desempate[0] = reps[0];
+			desempate[1] = reps[1];
+		} else {
+			desempate[0] = reps[1];
+			desempate[1] = reps[0];
+		}
+		for (int i = 0; i<5; i++) {
+			if (reps[0].val != mao[i].val && reps[1].val != mao[i].val) {
+				desempate[2] = mao[i];
+			}
+		}
+	}
+
+	// Ordena vetor "desempate" na ocorrencia de Full House
+	public void OrdenarDesempateFullHouse(){
+		int cont = 0;
+		for (int i = 0; i < 5; i++) {
+			if (reps[0].val == mao[i].val) {
+				cont++;
+			}
+		}
+		if (cont == 3) {
+			desempate[0] = reps[0];
+			desempate[1] = reps[1];
+		} else {
+			desempate[0] = reps[1];
+			desempate[1] = reps[0];
+		}
+	}
+	
+	// Ordena vetor "desempate" na ocorrencia de 1 quarteto
+	public void OrdenarDesempateQuarteto(){
+		desempate[0] = reps[0];
+		int i = 0;
+		while (i < 5 && reps[0].val == mao[i].val) {
+			i++;
+		}
+		desempate[1] = mao[i];
+	}
+	
 	
 	// retorna true se o objeto "this" tiver mao melhor
 	// considerando que "this" e "mao2" tem o mesmo nivel
