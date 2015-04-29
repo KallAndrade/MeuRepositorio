@@ -77,27 +77,21 @@ public class Mao {
 		// Verifica a ocorrencia de pares, trios ou sua concomitância
 		int contador = VerificarRepeticaoValores();
 		if (contador != 0) {
-			
-			// Full House
-			if (contador == 4) {
-				nivel = 7;
-				return 7;
-			}
 			// Four of a Kind
 			if (contador == 6) {
-				nivel = 8;
-				return 8;
+				return nivel = 8;
+			}
+			// Full House
+			if (contador == 4) {
+				return nivel = 7;
 			}
 			// 1 par, 2 pares ou trio
 			if (retorno == 1)
 			{
 				switch (contador) {
-					case 1:	nivel = 2;
-						return 2;
-					case 2: nivel = 3;
-						return 3;
-					case 3: nivel = 4; 
-						return 4;
+					case 1: return nivel = 2;
+					case 2: return nivel = 3;
+					case 3: return nivel = 4;
 				}
 			}
 		}
